@@ -1,0 +1,8 @@
+-Ticket Price times amount of customers for daily profit fromt tickets
+--Determine how much a customer will spend if hungry/thirsty 
+-Profit function for each customer(price of admission+concessions)
+
+
+List of Food = to food value of the concessions stands
+
+-min of 2 people in the zoo
