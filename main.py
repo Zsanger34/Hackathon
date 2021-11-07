@@ -14,8 +14,12 @@ mydb=mysql.connector.connect(host="localhost", user="root", password="root", dat
 mycursor=mydb.cursor()
 #Adds rows to the Mysql Table
 def addRow(day,cOL,cOW,cP,sH,zH) :
-    profit = cP -(cOL + cOW)
-    sql = "Insert into Zoo Values (" + str(day) +"," + str(cOL) + "," + str(cOW) + "," + str(cP) +  "," + str(sH) + ","+ str(zH) + "," + str(profit) +";"
+    print(cOL)
+    print(cOW)
+    print(cP)
+    profit = float(cP) -(float(cOL) + float(cOW))
+    sql = "Insert into Zoo Values ('" + str(day) +"'," + str(cOL) + "," + str(cOW) + "," + str(cP) +  ",'" + str(sH) + "','"+ str(zH) + "'," + str(profit) +");"
+    #print(sql)
     mycursor.execute(sql)
     mydb.commit()
 AnimalList =[]
@@ -62,7 +66,7 @@ def CusFav(lst):
         if anml[key]>hold:
             hold=anml[key]
             ret=key
-    return ret+" "+str(hold)
+    return [ret, str(hold)]
 
 
 
@@ -77,12 +81,14 @@ def CP(cus):
     return income
 
 
-#for n in range(1)
-#   lst=customerList()
-#   CPS = CP(lst)
-#   COLS = COL()
-#   FavRow = CusFav(lst)
-    ##addRow("Day" + str(n+2),cOL,16.5,cP,,zH)
+for n in range(400):
+    lst=CustomerList()
+    CPS = CP(lst)
+    COLS = COL()
+    FavRow = CusFav(lst)
+    hold1= FavRow[0]
+    hold2= FavRow[1]
+    addRow("Day" + str(n+2),COLS,16.5*8*5,CPS,hold1,hold2)
 #income=moneyMade(lst)
 #print(income)
 
